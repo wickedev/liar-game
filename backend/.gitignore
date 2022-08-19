@@ -1,0 +1,4 @@
+_esy
+_build
+esy.lock
+node_modules

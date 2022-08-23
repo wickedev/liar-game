@@ -12,7 +12,7 @@ function Nav(Props) {
                       prefetch: "none",
                       to: "/",
                       children: React.createElement("span", {
-                            className: "font-bold text-xl"
+                            className: "font-bold text-xl daimonion"
                           }, "Lair Game")
                     })));
 }

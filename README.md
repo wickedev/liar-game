@@ -7,3 +7,6 @@
 - `$ esy start`
 
 ## Frontend
+
+- `$ yarn`
+- `$ yarn dev`

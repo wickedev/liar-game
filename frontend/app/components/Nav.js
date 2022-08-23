@@ -13,16 +13,8 @@ function Nav(Props) {
                       to: "/",
                       children: React.createElement("span", {
                             className: "font-bold text-xl"
-                          }, "BLOG")
-                    }), React.createElement("ul", {
-                      className: "flex"
-                    }, React.createElement("li", {
-                          className: "text-neutral-400 px-2"
-                        }, "menu1"), React.createElement("li", {
-                          className: "text-neutral-400 px-2"
-                        }, "menu2"), React.createElement("li", {
-                          className: "text-neutral-400 px-2"
-                        }, "menu3"))));
+                          }, "Lair Game")
+                    })));
 }
 
 var make = Nav;

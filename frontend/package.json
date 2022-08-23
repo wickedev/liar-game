@@ -3,11 +3,15 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "npm run build:css && remix build",
+    "postinstall": "build:res",
+    "build": "run-p build:*",
     "build:css": "tailwindcss -m -i ./styles/global.css -o app/styles/global.css",
-    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "build:res": "rescript",
+    "build:remix": "remix build",
+    "dev": "run-p dev:*",
     "dev:css": "tailwindcss -w -i ./styles/global.css -o app/styles/global.css",
-    "res:dev": "rescript build -w"
+    "dev:res": "rescript build -w",
+    "dev:remix": "remix dev"
   },
   "dependencies": {
     "@remix-run/node": "^1.6.1",
@@ -28,6 +32,7 @@
     "autoprefixer": "^10.4.7",
     "concurrently": "^7.2.2",
     "eslint": "^8.15.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
     "rescript": "^9.1.4",
     "rescript-webapi": "^0.6.1",

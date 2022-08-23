@@ -10,4 +10,13 @@ module.exports = {
   // assetsBuildDirectory: "public/build",
   // serverBuildPath: "api/index.js",
   // publicPath: "/build/",
+  serverDependenciesToBundle: [
+    "ky",
+    "rescript",
+    "rescript",
+    "rescript/lib/es6/belt_Option.js",
+    "rescript/lib/es6/caml_option.js",
+    "rescript/lib/es6/curry.js",
+    "rescript/lib/es6/belt_Array.js"
+  ],
 };

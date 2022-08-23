@@ -6,7 +6,7 @@ import * as React$1 from "@remix-run/react";
 
 function meta(param) {
   return {
-          title: "rescript remix blog example"
+          title: "Lair Game"
         };
 }
 
@@ -28,7 +28,7 @@ function Root$default(Props) {
                       content: "width=device-width,initial-scale=1",
                       name: "viewport"
                     }), React.createElement(React$1.Meta, {}), React.createElement(React$1.Links, {})), React.createElement("body", {
-                  className: "bg-neutral-900"
+                  className: "bg-neutral-900 container mx-auto"
                 }, React.createElement(Nav.make, {}), React.createElement(React$1.Outlet, {}), React.createElement(React$1.ScrollRestoration, {}), React.createElement(React$1.Scripts, {}), React.createElement(React$1.LiveReload, {})));
 }
 

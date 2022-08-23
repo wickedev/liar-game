@@ -1,6 +1,6 @@
 let meta = () =>
   {
-    "title": "rescript remix blog example",
+    "title": "Lair Game",
   }
 
 let links = () => {
@@ -19,7 +19,7 @@ let default = () =>
       /* All link exports on all routes will go here */
       <Remix.Links />
     </head>
-    <body className={`bg-neutral-900`}>
+    <body className={`bg-neutral-900 container mx-auto`}>
       <Nav />
       /* Child routes go here */
       <Remix.Outlet />

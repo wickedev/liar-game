@@ -1,15 +1,29 @@
 {
-    "name": "rescript-remix-blog-template",
-    "reason": { "react-jsx": 3 },
-    "bs-dependencies": ["@rescript/react", "rescript-webapi"],
-    "ppx-flags": [],
-    "sources": [
-      { "dir": "bindings", "subdirs": true },
-      { "dir": "app", "subdirs": true }
-    ],
-    "package-specs": {
-      "module": "es6",
-      "in-source": true
+  "name": "rescript-remix-blog-template",
+  "reason": {
+    "react-jsx": 3
+  },
+  "bs-dependencies": [
+    "@rescript/react",
+    "rescript-webapi",
+    "bs-fetch",
+    "rescript-swr"
+  ],
+  "ppx-flags": [],
+  "sources": [
+    {
+      "dir": "bindings",
+      "subdirs": true
     },
-    "suffix": ".js"
-  }
+    {
+      "dir": "app",
+      "subdirs": true
+    }
+  ],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "bsc-flags": ["-open Belt"],
+  "suffix": ".js"
+}

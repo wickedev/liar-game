@@ -6,7 +6,7 @@ let home =
     var socket = new WebSocket("ws://" + window.location.host + "/ws");
 
     socket.onopen = function () {
-      socket.send("Hello?");
+      socket.send(JSON.stringify({"message_type":"Hell", "message": "Low"}));
     };
 
     socket.onmessage = function (e) {
@@ -17,6 +17,21 @@ let home =
   </body>
   </html>
 
+type message_object = {
+    message_type: string;
+    message: string;
+} [@@deriving yojson]
+
+let handle_client client =  
+  let rec loop () = 
+    match%lwt Dream.receive client with 
+    | Some(message') ->
+      let json = message' |> Yojson.Safe.from_string |> message_object_of_yojson in            
+      let%lwt () = Dream.send client json.message in 
+      loop ()
+    | _ -> Dream.close_websocket client
+  in
+  loop ()
 
 let () =
   Dream.run 
@@ -25,11 +40,9 @@ let () =
       Dream.get "/" (fun _ -> Dream.html home);
       Dream.get "ws"
       (fun _ -> 
-        Dream.websocket (fun websocket -> 
-          match%lwt Dream.receive websocket with 
-          | Some "Hello?" -> Dream.send websocket "Good-bye"
-          | _ -> Dream.close_websocket websocket));
+        Dream.websocket handle_client);
     ]
     
+
     
     

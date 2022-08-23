@@ -1,7 +1,7 @@
 (executable
  (name liar_backend)
  (libraries dream)
-  (preprocess (pps lwt_ppx)))
+  (preprocess (pps lwt_ppx ppx_yojson_conv)))
 
 
 (rule

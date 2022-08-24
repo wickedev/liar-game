@@ -4,7 +4,7 @@
   "sideEffects": false,
   "scripts": {
     "postinstall": "patch-package && remix setup node",
-    "build": "run-p build:*",
+    "build": "run-s build:css build:res build:remix",
     "build:css": "tailwindcss -m -i ./styles/global.css -o app/styles/global.css",
     "build:res": "rescript build -with-deps",
     "build:remix": "remix build",

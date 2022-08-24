@@ -12,8 +12,15 @@ let home =
     socket.onmessage = function (e) {
       alert(e.data);
     };
+    test = function () {
+      socket.send(JSON.stringify({"message_type":"Hell", "message": "Low"}));
+    }
 
     </script>
+
+    <button onClick="test();">
+    Test Button
+    </button>
   </body>
   </html>
 
@@ -22,14 +29,17 @@ type message_object = {
     message: string;
 } [@@deriving yojson]
 
+
+
 let handle_client client =  
   let rec loop () = 
     match%lwt Dream.receive client with 
     | Some(message') ->
       let json = message' |> Yojson.Safe.from_string |> message_object_of_yojson in            
-      let%lwt () = Dream.send client json.message in 
+      let _ = Dream.send client json.message in 
       loop ()
-    | _ -> Dream.close_websocket client
+    | _ -> 
+      client|>Dream.close_websocket
   in
   loop ()
 
@@ -39,8 +49,13 @@ let () =
     @@ Dream.router [
       Dream.get "/" (fun _ -> Dream.html home);
       Dream.get "ws"
-      (fun _ -> 
-        Dream.websocket handle_client);
+      (fun req -> 
+        (* Sec-WebSocket-Key 가 없으면 뱉기 *)
+        let websocket_key = Dream.header req "Sec-WebSocket-Key" in 
+        match websocket_key with
+        | Some(_) -> Dream.websocket handle_client
+        | None -> Dream.websocket Dream.close_websocket
+        );
     ]
     
 

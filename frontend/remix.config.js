@@ -8,4 +8,5 @@ module.exports = {
   ignoredRouteFiles: ["**/.*", "*.res"],
   serverDependenciesToBundle: [],
   transpileModules: ["rescript", "rescript-webapi", "ky"],
+  serverBuildDirectory: "api",
 };

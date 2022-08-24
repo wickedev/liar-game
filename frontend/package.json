@@ -12,7 +12,7 @@
     "dev:css": "tailwindcss -w -i ./styles/global.css -o app/styles/global.css",
     "dev:res": "rescript build -w -with-deps",
     "dev:remix": "remix dev",
-    "start": "remix-serve build"
+    "start": "remix-serve api"
   },
   "dependencies": {
     "@remix-run/node": "1.1.1",

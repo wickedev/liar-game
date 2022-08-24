@@ -24,7 +24,7 @@ function Index$default(Props) {
                       e.preventDefault();
                       var target = e.target;
                       var value = target.nickname.value;
-                      console.log(value);
+                      console.log("id=" + value);
                       
                     })
                 }, React.createElement("input", {

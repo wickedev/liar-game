@@ -1,3 +1,5 @@
+open Webapi.Dom
+
 @react.component
 let default = () => {
   <div className="flex flex-col justify-center items-center text-center text-white mx-12 gap-y-4">
@@ -20,11 +22,18 @@ let default = () => {
         e->ReactEvent.Synthetic.preventDefault
         let target = e->ReactEvent.Synthetic.target
         let value = target["nickname"]["value"]
-        Js.Console.log(value)
+        Js.Console.log(`id=${value}`)
 
         // 좋슴당
         // TODO: 쿠키 셋팅
+        // 아래 코드는 동작해야함
+        // let cookie = `id=${value}`
+        // let htmlDocument = document->Document.asHtmlDocument->Belt.Option.getExn
+        // HtmlDocument.setCookie(htmlDocument, cookie)
+        // 또는 아래 코드
+        // switch Webapi.Dom.document->Webapi.Dom.Document.asHtmlDocument { | Some(doc) => Webapi.Dom.HtmlDocument.setCookie(doc, "test=test") | None => () }
         // TODO: 웹소켓 입장 후 redirect
+
         ()
       }}>
       <input
